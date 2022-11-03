@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
 }
+
 html {
   font-family: "Raleway", sans-serif;
   font-size: 1rem;
@@ -10,12 +11,14 @@ html {
 header {
   height: 600px;
 }
-header > img {
+
+header>img {
   height: 100%;
   width: 100%;
   object-fit: cover;
   background-color: black;
 }
+
 .titleBlock {
   margin-top: -600px;
   height: 600px;
@@ -24,10 +27,12 @@ header > img {
   position: relative;
   background-color: hsla(0, 0%, 0%, 0.65);
 }
+
 .mainIcon {
   width: 80px;
   margin: 30px 0;
 }
+
 h1 {
   font-size: 10rem;
   text-align: center;
@@ -36,21 +41,26 @@ h1 {
   left: 48vw;
   animation: titlePosition 1.3s;
 }
+
 .headerTitle {
   text-align: center;
   animation: subtitlesPosition 2s;
 }
+
 .title {
   font-size: 3rem;
 }
+
 .subtitle {
   font-size: 1rem;
   color: #f0db4f;
   font-weight: 100;
 }
+
 .iconContainer {
   animation: languagesPosition 3s;
 }
+
 .littleIcon {
   margin: 10px 5px;
   width: 40px;
@@ -61,15 +71,18 @@ h1 {
     opacity: 0;
     transform: translateX(1000px);
   }
+
   100% {
     opacity: 1;
   }
 }
+
 @keyframes subtitlesPosition {
   0% {
     opacity: 0;
     transform: translateX(-1000px);
   }
+
   100% {
     opacity: 1;
   }
@@ -80,6 +93,7 @@ h1 {
     opacity: 0;
     transform: translateX(-1000px);
   }
+
   50% {
     opacity: 0.5;
     transform: scale(0.4);
@@ -88,4 +102,127 @@ h1 {
   100% {
     opacity: 1;
   }
+}
+
+.section {
+  height: 800px;
+  position: relative;
+  overflow: hidden;
+  background-image: linear-gradient(45deg,
+      hsl(240deg 3% 14%) 0%,
+      hsl(269deg 11% 22%) 11%,
+      hsl(304deg 15% 29%) 22%,
+      hsl(329deg 23% 38%) 33%,
+      hsl(344deg 29% 48%) 44%,
+      hsl(359deg 42% 58%) 56%,
+      hsl(13deg 64% 63%) 67%,
+      hsl(25deg 83% 64%) 78%,
+      hsl(38deg 90% 64%) 89%,
+      hsl(52deg 84% 63%) 100%);
+}
+
+.sectionTitleNumber {
+  position: absolute;
+  top: 50px;
+  left: 100px;
+  text-align: center;
+}
+
+.sectionNumber {
+  font-size: 8rem;
+}
+
+.sectionTitle {
+  font-size: 2rem;
+}
+
+/*---------------- #1 ----------------   */
+#calculator {
+  width: 500px;
+  height: 700px;
+  margin: 50px auto;
+  background-color: whitesmoke;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+#calculatorScreen {
+  width: 390px;
+  height: 200px;
+  padding: 0 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  font-size: 3rem;
+  overflow: hidden;
+  background-color: whitesmoke;
+  box-shadow: inset 4px 4px 5px rgba(0, 0, 0, 0.2), inset -4px -4px 5px white;
+  margin: 30px auto;
+  border-radius: 20px;
+}
+
+.temporaryCalculation {
+  position: absolute;
+  top: 0;
+  right: 1vw;
+  color: gray;
+}
+
+#calculatorButtonsGrid {
+  display: grid;
+  grid-column: span 4;
+  grid-row: span 5;
+  grid-gap: 15px;
+  padding: 0 30px;
+  font-size: 2rem;
+}
+
+#calculatorButtonsGrid>span {
+  text-align: center;
+  display: flex;
+  padding: 15px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2), -4px -4px 10px white;
+  cursor: pointer;
+}
+
+#calculatorButtonsGrid>span:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+
+#calculatorButtonsGrid>span:active {
+  transform: translateY(3px) scale(1.01);
+}
+
+/* C BUTTON */
+#calculatorButtonsGrid>span:nth-child(1) {
+  background-color: #f07e7e;
+}
+
+#calculatorButtonsGrid>span:nth-child(1):hover {
+  background-color: rgba(240, 126, 126, 0.5);
+}
+
+/* + BUTTON */
+#calculatorButtonsGrid>span:nth-child(12) {
+  grid-row: 3 / 5;
+  grid-column: 4 / 4;
+  background-color: rgb(125, 246, 125);
+}
+
+#calculatorButtonsGrid>span:nth-child(12):hover {
+  background-color: rgb(125, 246, 125, 0.5);
+}
+
+/* - BUTTON */
+#calculatorButtonsGrid>span:nth-child(19) {
+  background-color: rgb(160, 130, 232);
+}
+
+#calculatorButtonsGrid>span:nth-child(19):hover {
+  background-color: rgb(160, 130, 232, 0.5);
 }
