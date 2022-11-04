@@ -12,55 +12,91 @@ equalButton.addEventListener("click", () => {
 plusButton.addEventListener('click', () => {
 
 })
-let calculation = 0;
-let lastValuePressed = 0;
-let mathOperation = '';
+
+
+let operationToCalculate = '';
+let gatheringNumbers = '';
+let firstInteraction = true;
+let equalPressed = false;
+
 calculatorBottonGrid.addEventListener('click', (e) => {
 
 
     if (e.target.localName === 'span') {
+        const pressedValue = e.target.innerText;
+
+        const printInCalculatorScreen = (value) => mainCalculation.innerHTML = value;
+        const printInOperationScreen = (value) => temporaryCalculation.innerHTML = value;
 
         const calculate = () => {
-            console.log(`Calculation: ${calculation}, Last value pressed: ${lastValuePressed}, Operacion: ${mathOperation}`);
-            if (mathOperation && mathOperation === '/') calculation /= lastValuePressed;
-            else if (mathOperation === '*') calculation *= lastValuePressed;
-            else if (mathOperation === '+') calculation += lastValuePressed;
-            else if (mathOperation === '-') calculation -= lastValuePressed;
-            else if (mathOperation === '%') calculation = calculation * lastValuePressed / 100;
-            mainCalculation.innerHTML = calculation;
+            operationToCalculate = eval(operationToCalculate).toFixed(2);
+            printInCalculatorScreen(operationToCalculate);
+            gatheringNumbers = operationToCalculate;
+            // operationToCalculate = '';
         }
 
-        const pressedValue = e.target.innerText;
-        if (pressedValue === 'C') {
-            calculation = 0;
-            mathOperation = '';
+        // --- OPTION =
+        if (pressedValue === '=') {
+            calculate();
+            printInOperationScreen(0);
+            gatheringNumbers = '';
+            equalPressed = true;
         }
-        else if (pressedValue === '%') {
-            mathOperation = '%';
-        }
-        else if (pressedValue === '/') {
 
-            mathOperation = '/';
+        // --- OPTION C
+        else if (pressedValue === 'C') {
+            operationToCalculate = '';
+            firstInteraction = true;
+            printInCalculatorScreen(0);
+            printInOperationScreen(0);
         }
-        else if (pressedValue === '*') {
 
-            mathOperation = '*';
-        }
-        else if (pressedValue === '+') {
-            mathOperation = '+';
-            if (!calculation) temporaryCalculation.innerHTML = lastValuePressed;
+        // --- OPTION MATH
+        else if (pressedValue === '-' || pressedValue === '+' || pressedValue === '/' || pressedValue === '*' || pressedValue === '%') {
+            let lastCharacterWasOperation = typeof operationToCalculate === 'string' ? operationToCalculate.slice(-1) : '';
+            if (lastCharacterWasOperation === '-' ||
+                lastCharacterWasOperation === '+' ||
+                lastCharacterWasOperation === '/' ||
+                lastCharacterWasOperation === '*' ||
+                lastCharacterWasOperation === '%') {
+                operationToCalculate = operationToCalculate?.slice(0, -1);
 
-        }
-        else if (pressedValue === '-') {
-            mathOperation = '-';
+            }
 
+            if (equalPressed) {
+                equalPressed = false;
+            }
+
+            if (firstInteraction) {
+                firstInteraction = false;
+                operationToCalculate = '0';
+            }
+
+            printInOperationScreen(operationToCalculate + pressedValue);
+            printInCalculatorScreen(0);
+            gatheringNumbers = '';
+            operationToCalculate += pressedValue;
         }
-        else if (pressedValue === '=') {
-        }
+
+        // --- OPTION NUMBERS
         else {
-            numberPressed = Number(pressedValue);
-            mainCalculation.innerHTML = numberPressed;
-            lastValuePressed = numberPressed;
+            if (equalPressed) {
+                equalPressed = false;
+                operationToCalculate = '';
+            }
+
+            if (firstInteraction) {
+                firstInteraction = false;
+                operationToCalculate = pressedValue;
+            }
+            else operationToCalculate += pressedValue;
+
+
+            gatheringNumbers += pressedValue;
+            printInCalculatorScreen(gatheringNumbers);
         }
     }
+
+
+
 });

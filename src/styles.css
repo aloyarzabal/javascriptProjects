@@ -136,6 +136,16 @@ h1 {
   font-size: 2rem;
 }
 
+@media (max-width: 1100px) {
+  .sectionTitleNumber {
+
+    position: relative;
+    top: 0px;
+    left: 0px;
+  }
+}
+
+
 /*---------------- #1 ----------------   */
 #calculator {
   width: 500px;
@@ -167,6 +177,7 @@ h1 {
   top: 0;
   right: 1vw;
   color: gray;
+  font-size: 2.5rem;
 }
 
 #calculatorButtonsGrid {
@@ -184,9 +195,11 @@ h1 {
   padding: 15px;
   justify-content: center;
   align-items: center;
+  user-select: none;
   border-radius: 20px;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2), -4px -4px 10px white;
   cursor: pointer;
+  background-color: transparent;
 }
 
 #calculatorButtonsGrid>span:hover {
