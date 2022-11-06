@@ -1,12 +1,19 @@
+// --------------- DECLARATIONS --------------
+// -------------------- 1 --------------------
 const equalButton = document.getElementById("equalButton");
 const plusButton = document.getElementById("plusButton");
 const mainCalculation = document.getElementById("mainCalculation");
 const calculatorBottonGrid = document.getElementById("calculatorButtonsGrid");
 const temporaryCalculation = document.getElementById("temporaryCalculation");
 
-equalButton.addEventListener("click", () => {});
-
-plusButton.addEventListener("click", () => {});
+// -------------------- 2 --------------------
+const gallery = document.querySelectorAll(".gallery__div");
+const hufflepuffButton = document.getElementById("hufflepuffButton");
+const griffindorButton = document.getElementById("griffindorButton");
+const slytherinButton = document.getElementById("slytherinButton");
+const ravenclawButton = document.getElementById("ravenclawButton");
+// ------------------ SCRIPTS ----------------
+// --------------------- 1 -------------------
 
 let operationToCalculate = "";
 let gatheringNumbers = "";
@@ -98,4 +105,45 @@ calculatorBottonGrid.addEventListener("click", (e) => {
       printInCalculatorScreen(gatheringNumbers);
     }
   }
+});
+
+// --------------------- 2 -------------------
+
+let positionImgClicked = 4;
+gallery[4].classList.add("imgClicked");
+
+const restoreOtherPictures = (i) => {
+  gallery[positionImgClicked].classList.remove("imgClicked");
+  gallery[i].classList.add("imgClicked");
+  positionImgClicked = i;
+};
+
+const deleteOtherPictures = (picture) => {
+  for (let i = 0; i <= gallery.length - 1; ++i) {
+    if (i < picture) gallery[i].classList.add("eliminateLeft");
+    else if (i > picture) gallery[i].classList.add("eliminateRight");
+    else {
+      threePs = gallery[i].children[1].children;
+      for (let j = 1; j < 4; ++j) threePs[j].classList.toggle("invisible");
+    }
+  }
+};
+gallery.forEach((picture, i) => {
+  picture.addEventListener("click", (e) => {
+    picture.classList.add("imgClicked");
+    restoreOtherPictures(i);
+  });
+});
+
+hufflepuffButton.addEventListener("click", () => {
+  deleteOtherPictures(0);
+});
+griffindorButton.addEventListener("click", () => {
+  deleteOtherPictures(1);
+});
+slytherinButton.addEventListener("click", () => {
+  deleteOtherPictures(2);
+});
+ravenclawButton.addEventListener("click", () => {
+  deleteOtherPictures(3);
 });
