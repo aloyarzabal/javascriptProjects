@@ -12,7 +12,7 @@ header {
   height: 600px;
 }
 
-header>img {
+header > img {
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -102,23 +102,24 @@ h1 {
     opacity: 1;
   }
 }
-<<<<<<< HEAD
 
 .section {
   height: 800px;
   position: relative;
   overflow: hidden;
-  background-image: linear-gradient(45deg,
-      hsl(240deg 3% 14%) 0%,
-      hsl(269deg 11% 22%) 11%,
-      hsl(304deg 15% 29%) 22%,
-      hsl(329deg 23% 38%) 33%,
-      hsl(344deg 29% 48%) 44%,
-      hsl(359deg 42% 58%) 56%,
-      hsl(13deg 64% 63%) 67%,
-      hsl(25deg 83% 64%) 78%,
-      hsl(38deg 90% 64%) 89%,
-      hsl(52deg 84% 63%) 100%);
+  background-image: linear-gradient(
+    45deg,
+    hsl(240deg 3% 14%) 0%,
+    hsl(269deg 11% 22%) 11%,
+    hsl(304deg 15% 29%) 22%,
+    hsl(329deg 23% 38%) 33%,
+    hsl(344deg 29% 48%) 44%,
+    hsl(359deg 42% 58%) 56%,
+    hsl(13deg 64% 63%) 67%,
+    hsl(25deg 83% 64%) 78%,
+    hsl(38deg 90% 64%) 89%,
+    hsl(52deg 84% 63%) 100%
+  );
 }
 
 .sectionTitleNumber {
@@ -129,7 +130,11 @@ h1 {
 }
 
 .sectionNumber {
-  font-size: 8rem;
+  top: 10px;
+  left: 20px;
+  font-size: 10rem;
+  color: #414141;
+  text-shadow: -5px 10.5px 15px black, 20px -4.5px 33px white;
 }
 
 .sectionTitle {
@@ -138,13 +143,11 @@ h1 {
 
 @media (max-width: 1100px) {
   .sectionTitleNumber {
-
     position: relative;
     top: 0px;
     left: 0px;
   }
 }
-
 
 /*---------------- #1 ----------------   */
 #calculator {
@@ -189,7 +192,7 @@ h1 {
   font-size: 2rem;
 }
 
-#calculatorButtonsGrid>span {
+#calculatorButtonsGrid > span {
   text-align: center;
   display: flex;
   padding: 15px;
@@ -202,55 +205,39 @@ h1 {
   background-color: transparent;
 }
 
-#calculatorButtonsGrid>span:hover {
+#calculatorButtonsGrid > span:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-
-#calculatorButtonsGrid>span:active {
+#calculatorButtonsGrid > span:active {
   transform: translateY(3px) scale(1.01);
 }
 
 /* C BUTTON */
-#calculatorButtonsGrid>span:nth-child(1) {
+#calculatorButtonsGrid > span:nth-child(1) {
   background-color: #f07e7e;
 }
 
-#calculatorButtonsGrid>span:nth-child(1):hover {
+#calculatorButtonsGrid > span:nth-child(1):hover {
   background-color: rgba(240, 126, 126, 0.5);
 }
 
 /* + BUTTON */
-#calculatorButtonsGrid>span:nth-child(12) {
+#calculatorButtonsGrid > span:nth-child(12) {
   grid-row: 3 / 5;
   grid-column: 4 / 4;
   background-color: rgb(125, 246, 125);
 }
 
-#calculatorButtonsGrid>span:nth-child(12):hover {
+#calculatorButtonsGrid > span:nth-child(12):hover {
   background-color: rgb(125, 246, 125, 0.5);
 }
 
 /* - BUTTON */
-#calculatorButtonsGrid>span:nth-child(19) {
+#calculatorButtonsGrid > span:nth-child(19) {
   background-color: rgb(160, 130, 232);
 }
 
-#calculatorButtonsGrid>span:nth-child(19):hover {
+#calculatorButtonsGrid > span:nth-child(19):hover {
   background-color: rgb(160, 130, 232, 0.5);
 }
-=======
-.section {
-  position: relative;
-  height: 800px;
-  background: #414141;
-}
-.number-section {
-  position: absolute;
-  top: 10px;
-  left: 20px;
-  font-size: 10rem;
-  color: #414141;
-  text-shadow: -5px 10.5px 15px black, 20px -4.5px 33px white;
-}
->>>>>>> stash
