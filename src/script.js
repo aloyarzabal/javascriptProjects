@@ -12,6 +12,15 @@ const hufflepuffButton = document.getElementById("hufflepuffButton");
 const griffindorButton = document.getElementById("griffindorButton");
 const slytherinButton = document.getElementById("slytherinButton");
 const ravenclawButton = document.getElementById("ravenclawButton");
+
+// -------------------- 3 --------------------
+const inputTextToDo = document.getElementById("input_toDo");
+const buttonTextToDo = document.getElementById("submitButton_toDo");
+const listTasksToDo = document.getElementById("toDoList");
+const listTaDelete = document.getElementById("doneList");
+const amountOfTasksToDo = document.getElementById("h3__toDo");
+
+
 // ------------------ SCRIPTS ----------------
 // --------------------- 1 -------------------
 
@@ -147,3 +156,24 @@ slytherinButton.addEventListener("click", () => {
 ravenclawButton.addEventListener("click", () => {
   deleteOtherPictures(3);
 });
+
+// --------------------- 3 -------------------
+var taskCounter = 0;
+
+buttonTextToDo.addEventListener("click", (e) => {
+  e.preventDefault;
+  const insertedText = inputTextToDo.value;
+  const HTMLText =
+    `<div class="toDoList__div-toDo-task"> ${insertedText} 
+      <div class="toDoList__div-toDo-task-buttons">
+      <input type="button" value="Done"   class="buttonInsideTask">
+      <input type="button" value="Delete" class="buttonInsideTask">
+      </div>
+    </div>`;
+  listTasksToDo.insertAdjacentHTML("beforeend", HTMLText);
+  ++taskCounter;
+
+  amountOfTasksToDo.innerText = amountOfTasksToDo.innerText.slice(0, -1) + taskCounter;
+  inputTextToDo.value = "";
+  taskButtons = document.querySelectorAll("buttonInsideTask");
+})
