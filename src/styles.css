@@ -2,6 +2,9 @@
   padding: 0;
   margin: 0;
 }
+:root {
+  --boxshadow-color: #3a3939;
+}
 
 html {
   font-family: "Raleway", sans-serif;
@@ -12,7 +15,7 @@ header {
   height: 600px;
 }
 
-header>img {
+header > img {
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -107,17 +110,19 @@ h1 {
   height: 800px;
   position: relative;
   overflow: hidden;
-  background-image: linear-gradient(45deg,
-      hsl(240deg 3% 14%) 0%,
-      hsl(269deg 11% 22%) 11%,
-      hsl(304deg 15% 29%) 22%,
-      hsl(329deg 23% 38%) 33%,
-      hsl(344deg 29% 48%) 44%,
-      hsl(359deg 42% 58%) 56%,
-      hsl(13deg 64% 63%) 67%,
-      hsl(25deg 83% 64%) 78%,
-      hsl(38deg 90% 64%) 89%,
-      hsl(52deg 84% 63%) 100%);
+  background-image: linear-gradient(
+    45deg,
+    hsl(240deg 3% 14%) 0%,
+    hsl(269deg 11% 22%) 11%,
+    hsl(304deg 15% 29%) 22%,
+    hsl(329deg 23% 38%) 33%,
+    hsl(344deg 29% 48%) 44%,
+    hsl(359deg 42% 58%) 56%,
+    hsl(13deg 64% 63%) 67%,
+    hsl(25deg 83% 64%) 78%,
+    hsl(38deg 90% 64%) 89%,
+    hsl(52deg 84% 63%) 100%
+  );
 }
 
 .sectionTitleNumber {
@@ -191,7 +196,7 @@ h1 {
   font-size: 2rem;
 }
 
-#calculatorButtonsGrid>span {
+#calculatorButtonsGrid > span {
   text-align: center;
   display: flex;
   padding: 15px;
@@ -204,40 +209,40 @@ h1 {
   background-color: transparent;
 }
 
-#calculatorButtonsGrid>span:hover {
+#calculatorButtonsGrid > span:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-#calculatorButtonsGrid>span:active {
+#calculatorButtonsGrid > span:active {
   transform: translateY(3px) scale(1.01);
 }
 
 /* C BUTTON */
-#calculatorButtonsGrid>span:nth-child(1) {
+#calculatorButtonsGrid > span:nth-child(1) {
   background-color: #f07e7e;
 }
 
-#calculatorButtonsGrid>span:nth-child(1):hover {
+#calculatorButtonsGrid > span:nth-child(1):hover {
   background-color: rgba(240, 126, 126, 0.5);
 }
 
 /* + BUTTON */
-#calculatorButtonsGrid>span:nth-child(12) {
+#calculatorButtonsGrid > span:nth-child(12) {
   grid-row: 3 / 5;
   grid-column: 4 / 4;
   background-color: rgb(125, 246, 125);
 }
 
-#calculatorButtonsGrid>span:nth-child(12):hover {
+#calculatorButtonsGrid > span:nth-child(12):hover {
   background-color: rgb(125, 246, 125, 0.5);
 }
 
 /* - BUTTON */
-#calculatorButtonsGrid>span:nth-child(19) {
+#calculatorButtonsGrid > span:nth-child(19) {
   background-color: rgb(160, 130, 232);
 }
 
-#calculatorButtonsGrid>span:nth-child(19):hover {
+#calculatorButtonsGrid > span:nth-child(19):hover {
   background-color: rgb(160, 130, 232, 0.5);
 }
 
@@ -256,11 +261,11 @@ h1 {
   text-transform: uppercase;
 }
 
-.section__inner-title>h3 {
+.section__inner-title > h3 {
   font-size: 2rem;
 }
 
-.section__inner-title>h4 {
+.section__inner-title > h4 {
   font-size: 1.1rem;
   font-weight: 100;
   color: orange;
@@ -296,7 +301,7 @@ h1 {
   object-position: center;
   object-fit: cover;
   border-radius: 20px;
-  box-shadow: 4px 4px 10px #282727;
+  box-shadow: 4px 4px 10px var(--boxshadow-color);
 }
 
 .gallery__div:hover {
@@ -432,7 +437,12 @@ h1 {
 
 .toDoList {
   background: rgb(124, 124, 124);
-  background: linear-gradient(45deg, rgba(124, 124, 124, 1) 0%, rgba(235, 155, 170, 1) 35%, rgba(255, 255, 255, 1) 100%);
+  background: linear-gradient(
+    45deg,
+    rgba(124, 124, 124, 1) 0%,
+    rgba(235, 155, 170, 1) 35%,
+    rgba(255, 255, 255, 1) 100%
+  );
   display: flex;
   text-align: center;
   font-size: 1.7rem;
@@ -442,7 +452,14 @@ h1 {
   margin: auto;
   width: 32%;
 }
-
+.toDoList__div-form form {
+  border: 4px solid white;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 40px 10px 10px 20px;
+  box-shadow: 10px 5px 10px var(--boxshadow-color);
+  background: #ffffff7a;
+}
 #input_toDo {
   width: 85%;
   height: 40px;
@@ -467,7 +484,7 @@ h1 {
   margin: 20px;
   border-radius: 30px;
   overflow-y: auto;
-  box-shadow: 4px 4px 10px gray;
+  box-shadow: 4px 4px 10px var(--boxshadow-color);
 }
 
 .toDoList__div-done {
@@ -483,19 +500,75 @@ h1 {
   height: 100px;
   margin: 20px auto 10px;
   padding: 10px;
-  border-radius: 5px;
-  box-shadow: 4px 4px 10px lightgray;
+  position: relative;
+  border-radius: 15px;
+  box-shadow: 4px 4px 10px var(--boxshadow-color);
   text-align: left;
+  background-color: white;
 }
 
 .toDoList__div-toDo-task:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgb(255, 243, 243);
 }
-
+.toDoList__div-toDo-task:hover .toDoList__div-toDo-task-buttons {
+  display: block;
+}
 .toDoList__div-toDo-task-buttons {
   text-align: center;
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+  cursor: pointer;
+  display: none;
 }
-
+.toDoList__div-toDo-task-buttons-delete {
+  background-image: url("../assets/icons/bin_closed.png");
+  width: 45px;
+  height: 40px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  transition: all 1s;
+  padding: 5px;
+  background-origin: content-box;
+  border-radius: 30%;
+}
+.toDoList__div-toDo-task-buttons-delete:hover {
+  background-color: #fa4747;
+}
+.toDoList__div-toDo-task-buttons-done {
+  background-image: url("../assets/icons/tick.png");
+  width: 25px;
+  height: 25px;
+  margin: 5px auto 0 auto;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: all 1s;
+  padding: 15px;
+  background-origin: content-box;
+  border-radius: 30%;
+}
+.toDoList__div-toDo-task-buttons-done:hover {
+  /* background-image: url("../assets/icons/checked.png"); */
+  background-color: lightgreen;
+}
+.toDoList__div-toDo-task > h3 {
+  font-weight: 100;
+  padding: 20px 60px;
+  font-size: 1.3rem;
+  height: 40%;
+}
+.toDoList__div-toDo-task-buttons-number {
+  position: absolute;
+  left: 0px;
+  top: 0%;
+  overflow: hidden;
+  background-color: pink;
+  font-style: italic;
+  padding: 40px 10px;
+  border-radius: 15px 0 0 15px;
+  height: 33%;
+}
 
 .buttonInsideTask {
   padding: 10px 20px;
@@ -513,4 +586,26 @@ h1 {
 
 .buttonInsideTask:nth-child(2):hover {
   background-color: rgba(235, 155, 170, 1);
+}
+.toDoList__div-done-div {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.toDoList__div-done-div-img {
+  width: 30px;
+  height: 30px;
+  margin: auto 10px;
+  background-color: white;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 4px 4px 10px var(--boxshadow-color);
+}
+.toDoList__div-done-div-p {
+  background-color: white;
+  width: 65%;
+  border-radius: 50px;
+  padding: 10px 40px;
+  font-size: 1.3rem;
+  box-shadow: 4px 4px 10px var(--boxshadow-color);
 }

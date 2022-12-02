@@ -17,9 +17,8 @@ const ravenclawButton = document.getElementById("ravenclawButton");
 const inputTextToDo = document.getElementById("input_toDo");
 const buttonTextToDo = document.getElementById("submitButton_toDo");
 const listTasksToDo = document.getElementById("toDoList");
-const listTaDelete = document.getElementById("doneList");
+const listTasks = document.getElementById("doneList");
 const amountOfTasksToDo = document.getElementById("h3__toDo");
-
 
 // ------------------ SCRIPTS ----------------
 // --------------------- 1 -------------------
@@ -158,22 +157,64 @@ ravenclawButton.addEventListener("click", () => {
 });
 
 // --------------------- 3 -------------------
-var taskCounter = 0;
+let taskCounter = 0;
+let sequenceCounter = 0;
+
+const overwriteNumTasks = function (counter) {
+  amountOfTasksToDo.innerText =
+    amountOfTasksToDo.innerText.slice(0, -1) + counter;
+};
+
+const modifyCounters = function (task, sequence) {
+  taskCounter += task;
+  sequenceCounter += sequence;
+  if (task !== 0) {
+    overwriteNumTasks(taskCounter);
+  }
+};
 
 buttonTextToDo.addEventListener("click", (e) => {
   e.preventDefault;
-  const insertedText = inputTextToDo.value;
-  const HTMLText =
-    `<div class="toDoList__div-toDo-task"> ${insertedText} 
+  let insertedText = inputTextToDo.value;
+  insertedText =
+    insertedText[0].toUpperCase() + insertedText.toLowerCase().slice(1);
+  const HTMLText = `<div class="toDoList__div-toDo-task"> 
+      <h3>${insertedText}</h3>
+      <p class="toDoList__div-toDo-task-buttons-number"> ${
+        sequenceCounter + 1
+      }</p>
       <div class="toDoList__div-toDo-task-buttons">
-      <input type="button" value="Done"   class="buttonInsideTask">
-      <input type="button" value="Delete" class="buttonInsideTask">
+         <div class="toDoList__div-toDo-task-buttons-delete"> </div>
+         <div class="toDoList__div-toDo-task-buttons-done"> </div>
       </div>
     </div>`;
   listTasksToDo.insertAdjacentHTML("beforeend", HTMLText);
-  ++taskCounter;
+  modifyCounters(1, 1);
 
-  amountOfTasksToDo.innerText = amountOfTasksToDo.innerText.slice(0, -1) + taskCounter;
   inputTextToDo.value = "";
   taskButtons = document.querySelectorAll("buttonInsideTask");
-})
+});
+
+listTasksToDo.addEventListener("click", (e) => {
+  const deleteTodo =
+    e.target.classList[0] === "toDoList__div-toDo-task-buttons-delete";
+  const doneToDo =
+    e.target.classList[0] === "toDoList__div-toDo-task-buttons-done";
+
+  if (deleteTodo || doneToDo) {
+    const eliminatedElement = e.target.parentElement.parentElement;
+    eliminatedElement.remove();
+
+    let pictureURL = deleteTodo
+      ? "../assets/icons/cruz_roja.png"
+      : "../assets/icons/check_verde.png";
+
+    const finishedElement = `<div class="toDoList__div-done-div">
+    <img class="toDoList__div-done-div-img" src="${pictureURL}"> 
+    <p class="toDoList__div-done-div-p"> ${eliminatedElement.children[0].innerText}</p>
+      </div>`;
+
+    listTasks.insertAdjacentHTML("beforeend", finishedElement);
+    modifyCounters(-1, 0);
+  }
+});
