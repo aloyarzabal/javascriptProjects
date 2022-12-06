@@ -150,6 +150,9 @@ h1 {
     top: 0px;
     left: 0px;
   }
+  .slider {
+    margin-top: 0px !important;
+  }
 }
 
 /*---------------- #1 ----------------   */
@@ -608,4 +611,95 @@ h1 {
   padding: 10px 40px;
   font-size: 1.3rem;
   box-shadow: 4px 4px 10px var(--boxshadow-color);
+}
+
+/*---------------- #4 ----------------   */
+
+.sliderSection {
+  background-color: burlywood;
+  background-image: none;
+}
+.slider {
+  position: relative;
+  margin: auto;
+  margin-top: 200px;
+}
+.slide__button {
+  position: absolute;
+  top: 50%;
+  padding: 1rem 1.1rem 1rem 1rem;
+  background-color: white;
+  font-size: 2rem;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 4px 4px 10px var(--boxshadow-color);
+}
+.slide__button:hover {
+  background-color: rgb(209, 209, 209);
+}
+.slide__button--right {
+  right: 6%;
+}
+.slide__button--left {
+  left: 6%;
+}
+.slide__content {
+  position: relative;
+  width: 65%;
+  margin: auto;
+}
+.slide__content-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.slide__content-option {
+  padding: 20px 15px;
+  border-radius: 25px;
+  width: 150px;
+  height: 15px;
+  text-align: center;
+  box-shadow: 4px 4px 10px var(--boxshadow-color);
+  transform: translateY(30px);
+  cursor: pointer;
+}
+.slide__content-option--1 {
+  background-color: rosybrown;
+}
+.slide__content-option--1:hover {
+  background-color: rgb(137, 104, 104);
+}
+.slide__content-option--2 {
+  background-color: silver;
+}
+.slide__content-option--2:hover {
+  background-color: rgb(148, 147, 147);
+}
+.slide__content-option--3 {
+  background-color: gold;
+}
+.slide__content-option--3:hover {
+  background-color: rgb(202, 172, 0);
+}
+.slide__content-option-selected {
+  transform: translateY(16px) scale(1.1);
+}
+.hiddenSlide {
+  display: none;
+}
+.slide__content-text {
+  background-color: white;
+  padding: 50px;
+  border-radius: 15px;
+  max-width: 50rem;
+  min-height: 16rem;
+  margin: auto;
+}
+.slide__content-text h3 {
+  font-size: 3rem;
+  padding: 20px 0;
+}
+.slide__content-text p {
+  font-size: 1.3rem;
+  padding: 10px 0;
 }

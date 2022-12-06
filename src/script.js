@@ -20,6 +20,18 @@ const listTasksToDo = document.getElementById("toDoList");
 const listTasks = document.getElementById("doneList");
 const amountOfTasksToDo = document.getElementById("h3__toDo");
 
+// -------------------- 4 --------------------
+const sliderLeftButton = document.querySelector(".slide__button--left");
+const sliderRightButton = document.querySelector(".slide__button--right");
+// const sliderBasic = document.getElementsByClassName("slide__content-text--1");
+// const sliderPremium = document.getElementsByClassName("slide__content-text--2");
+// const sliderElite = document.getElementsByClassName("slide__content-text--3");
+const sliderOptionsContainer = document.querySelector(
+  ".slide__content-options"
+);
+const sliderOptions = document.querySelectorAll(".slide__content-option");
+const slides = document.querySelectorAll(".slide__content-text");
+
 // ------------------ SCRIPTS ----------------
 // --------------------- 1 -------------------
 
@@ -217,4 +229,47 @@ listTasksToDo.addEventListener("click", (e) => {
     listTasks.insertAdjacentHTML("beforeend", finishedElement);
     modifyCounters(-1, 0);
   }
+});
+
+// --------------------- 4 -------------------
+let actualSlide = 0;
+
+const moveSlide = (newSlide) => {
+  actualSlide = newSlide;
+
+  slides.forEach((slide) => {
+    slide.classList.add("hiddenSlide");
+  });
+
+  sliderOptions.forEach((option) => {
+    option.classList.remove("slide__content-option-selected");
+  });
+
+  slides[actualSlide].classList.remove("hiddenSlide");
+  sliderOptions[actualSlide].classList.add("slide__content-option-selected");
+};
+
+// Left button
+sliderLeftButton.addEventListener("click", () => {
+  if (actualSlide - 1 < 0) moveSlide(slides.length - 1);
+  else moveSlide(actualSlide - 1);
+});
+
+// Right button
+sliderRightButton.addEventListener("click", () => {
+  if (actualSlide + 1 === slides.length) moveSlide(0);
+  else moveSlide(actualSlide + 1);
+});
+
+// Option button
+sliderOptionsContainer.addEventListener("click", (e) => {
+  const classList = e.target.classList;
+
+  let selectedOption;
+  classList.forEach((el) => {
+    if (el.includes("slide__content-option--")) {
+      selectedOption = el.slice(-1);
+      moveSlide(selectedOption - 1);
+    }
+  });
 });
