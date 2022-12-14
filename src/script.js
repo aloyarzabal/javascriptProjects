@@ -32,8 +32,21 @@ const sliderOptionsContainer = document.querySelector(
 const sliderOptions = document.querySelectorAll(".slide__content-option");
 const slides = document.querySelectorAll(".slide__content-text");
 
-// ------------------ SCRIPTS ----------------
-// --------------------- 1 -------------------
+// -------------------- 5 --------------------
+const countdownButton = document.getElementById(
+  "countdownMain__dateSelection-button"
+);
+const introducedDay = document.getElementById("countdown-birthday-day");
+const introducedMonth = document.getElementById("countdown-birthday-month");
+const introducedYear = document.getElementById("countdown-birthday-year");
+const displayedDays = document.getElementById("displayedDays");
+const displayedHours = document.getElementById("displayedHours");
+const displayedMinutes = document.getElementById("displayedMinutes");
+const displayedSeconds = document.getElementById("displayedSeconds");
+const countdownSection = document.querySelector(".countdownMain__timeLeft");
+
+// --------------------------------------------------------  SCRIPTS --------------------------------------------------------
+// ----------------------------------------------------------- #1 -----------------------------------------------------------
 
 let operationToCalculate = "";
 let gatheringNumbers = "";
@@ -127,7 +140,7 @@ calculatorBottonGrid.addEventListener("click", (e) => {
   }
 });
 
-// --------------------- 2 -------------------
+// ----------------------------------------------------------- #2 -----------------------------------------------------------
 
 let positionImgClicked = 4;
 gallery[4].classList.add("imgClicked");
@@ -168,7 +181,7 @@ ravenclawButton.addEventListener("click", () => {
   deleteOtherPictures(3);
 });
 
-// --------------------- 3 -------------------
+// ----------------------------------------------------------- #3 -----------------------------------------------------------
 let taskCounter = 0;
 let sequenceCounter = 0;
 
@@ -231,7 +244,7 @@ listTasksToDo.addEventListener("click", (e) => {
   }
 });
 
-// --------------------- 4 -------------------
+// ----------------------------------------------------------- #4 -----------------------------------------------------------
 let actualSlide = 0;
 
 const moveSlide = (newSlide) => {
@@ -272,4 +285,65 @@ sliderOptionsContainer.addEventListener("click", (e) => {
       moveSlide(selectedOption - 1);
     }
   });
+});
+
+// ----------------------------------------------------------- #5 -----------------------------------------------------------
+// countdownButton
+
+// introducedDay
+// introducedMonth
+// introducedYear
+
+// displayedDays
+// displayedHours
+// displayedMinutes
+// displayedSeconds
+
+countdownButton.addEventListener("click", (e) => {
+  e.preventDefault;
+
+  const iDay = introducedDay.value;
+  const iMonth = introducedMonth.value - 1;
+  const iYear = introducedYear.value;
+
+  const today = new Date();
+  const birthDate = new Date(today.getFullYear(), iMonth, iDay);
+  // Seconds of a year
+  const msOfAYear = 365 * 24 * 60 * 60 * 1000;
+
+  //If positive - didn't happen this year yet
+  const msToBirthday =
+    birthDate - today >= 0
+      ? birthDate - today
+      : msOfAYear - Math.abs(birthDate - today);
+
+  //Display timer
+  let time = msToBirthday / 1000;
+  const tick = () => {
+    displayedDays.textContent = Math.round(time / 60 / 60 / 24);
+
+    const remainingHours = (time / 60 / 60) % 24;
+    displayedHours.textContent = Math.floor(remainingHours);
+
+    const remainingMinutes = (remainingHours - Math.floor(remainingHours)) * 60;
+    displayedMinutes.textContent = Math.round(remainingMinutes);
+
+    const remainingSeconds =
+      (remainingMinutes - Math.floor(remainingMinutes)) * 60;
+    displayedSeconds.textContent = Math.round(remainingSeconds);
+
+    time--;
+  };
+
+  const timer = setInterval(tick, 1000);
+  // Call out after 1 minute
+  setTimeout(() => {
+    clearInterval(timer);
+  }, 1 * 60 * 1000);
+
+  introducedDay.value = "";
+  introducedMonth.value = "";
+  introducedYear.value = "";
+
+  countdownSection.style.opacity = 100;
 });

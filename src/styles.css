@@ -150,12 +150,13 @@ h1 {
     top: 0px;
     left: 0px;
   }
-  .slider {
+  .slider,
+  .countdownMain {
     margin-top: 0px !important;
   }
 }
 
-/*---------------- #1 ----------------   */
+/*------------------------------------------------ #1 ------------------------------------------------   */
 
 #calculator {
   width: 500px;
@@ -249,7 +250,7 @@ h1 {
   background-color: rgb(160, 130, 232, 0.5);
 }
 
-/*---------------- #2 ----------------   */
+/*------------------------------------------------ #2 ------------------------------------------------   */
 .magicians {
   background-image: url("../assets/photos/3_wizards_logo_HP.png");
   background-position: 100% 115%;
@@ -436,7 +437,7 @@ h1 {
   }
 }
 
-/*---------------- #3 ----------------   */
+/*------------------------------------------------ #3 ------------------------------------------------   */
 
 .toDoList {
   background: rgb(124, 124, 124);
@@ -613,7 +614,7 @@ h1 {
   box-shadow: 4px 4px 10px var(--boxshadow-color);
 }
 
-/*---------------- #4 ----------------   */
+/*------------------------------------------------ #4 ------------------------------------------------   */
 
 .sliderSection {
   background-color: burlywood;
@@ -702,4 +703,60 @@ h1 {
 .slide__content-text p {
   font-size: 1.3rem;
   padding: 10px 0;
+}
+
+/*------------------------------------------------ #5 ------------------------------------------------   */
+.countdown {
+  background: linear-gradient(90deg, #f5f7fa, #b8c6db);
+}
+.countdownMain {
+  width: 80vw;
+  margin: auto;
+  text-align: center;
+  margin-top: 300px;
+}
+.countdownMain__dateSelection {
+  margin: 50px auto;
+}
+.countdownMain__dateSelection > h3,
+.countdownMain__timeLeft > h3 {
+  font-size: 1.5rem;
+  margin: 40px;
+}
+.countdownMain__dateSelection-div {
+  margin: 20px;
+}
+.countdownMain__dateSelection-div > input {
+  width: 150px;
+  height: 40px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+#countdownMain__dateSelection-button {
+  width: 150px;
+  padding: 10px;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.countdownMain__timeLeft {
+  margin: 50px auto;
+  opacity: 0;
+}
+
+.countdownMain__timeLeft-div {
+  display: flex;
+  justify-content: center;
+}
+.countdownMain__timeLeft-div-dateTitle {
+  transform: translateX(100px);
+  font-size: 1.5rem;
+}
+.countdownMain__timeLeft-div-dateNumber {
+  transform: translateY(40px);
+  width: 120px;
+  height: 100px;
+  font-size: 4rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
 }

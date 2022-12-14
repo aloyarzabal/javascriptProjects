@@ -255,6 +255,74 @@
       </div>
     </div>
 
+    <!--------------------                        #5                        ------------------>
+    <div class="section countdown">
+      <!-- SECTION NUMBER -->
+      <div class="sectionTitleNumber">
+        <h3 class="sectionNumber">5</h3>
+        <h4 class="sectionTitle">Countdown</h4>
+      </div>
+      <!-- CODE -->
+      <div class="countdownMain">
+        <div class="countdownMain__dateSelection">
+          <h3>Please select the date of your birth date</h3>
+          <div class="countdownMain__dateSelection-div">
+            <input type="number" min="1" max="31" id="countdown-birthday-day" />
+            <input
+              type="number"
+              min="1"
+              max="12"
+              id="countdown-birthday-month"
+              strict
+            />
+            <input
+              type="number"
+              min="1900"
+              max="2022"
+              id="countdown-birthday-year"
+            />
+          </div>
+          <input
+            type="button"
+            value="Calculate!"
+            id="countdownMain__dateSelection-button"
+          />
+        </div>
+        <div class="countdownMain__timeLeft">
+          <h3>Your birthday is in...</h3>
+          <div class="countdownMain__timeLeft-div">
+            <p class="countdownMain__timeLeft-div-dateTitle">Days</p>
+            <p
+              class="countdownMain__timeLeft-div-dateNumber"
+              id="displayedDays"
+            >
+              3
+            </p>
+            <p class="countdownMain__timeLeft-div-dateTitle">Hours</p>
+            <p
+              class="countdownMain__timeLeft-div-dateNumber"
+              id="displayedHours"
+            >
+              15
+            </p>
+            <p class="countdownMain__timeLeft-div-dateTitle">Minutes</p>
+            <p
+              class="countdownMain__timeLeft-div-dateNumber"
+              id="displayedMinutes"
+            >
+              34
+            </p>
+            <p class="countdownMain__timeLeft-div-dateTitle">Seconds</p>
+            <p
+              class="countdownMain__timeLeft-div-dateNumber"
+              id="displayedSeconds"
+            >
+              13
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
