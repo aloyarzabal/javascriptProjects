@@ -45,6 +45,11 @@ const displayedMinutes = document.getElementById("displayedMinutes");
 const displayedSeconds = document.getElementById("displayedSeconds");
 const countdownSection = document.querySelector(".countdownMain__timeLeft");
 
+// -------------------- 6 --------------------
+const pkmnButton = document.getElementById("pkmnButton");
+const pkmnIntroduced = document.getElementById("pkmnIntroduced");
+const pkmnDisplay = document.getElementById("pkmnDisplay");
+const pkmnMessage = document.querySelector(".pkmnMessage");
 // --------------------------------------------------------  SCRIPTS --------------------------------------------------------
 // ----------------------------------------------------------- #1 -----------------------------------------------------------
 
@@ -288,16 +293,6 @@ sliderOptionsContainer.addEventListener("click", (e) => {
 });
 
 // ----------------------------------------------------------- #5 -----------------------------------------------------------
-// countdownButton
-
-// introducedDay
-// introducedMonth
-// introducedYear
-
-// displayedDays
-// displayedHours
-// displayedMinutes
-// displayedSeconds
 
 countdownButton.addEventListener("click", (e) => {
   e.preventDefault;
@@ -346,4 +341,54 @@ countdownButton.addEventListener("click", (e) => {
   introducedYear.value = "";
 
   countdownSection.style.opacity = 100;
+});
+
+// ----------------------------------------------------------- #6 -----------------------------------------------------------
+
+const displayPkmn = function (data) {
+  pkmnMessage.textContent = `We're looking for your Pokémon, please hold on!`;
+  const html = `
+    <div class="pkmnContainer">
+      <img class="pkmnImage" src="${data.sprites.front_default}"/>
+      <img class="pkmnImageShiny" src="${data.sprites.front_shiny}"/>
+      <div class="pkmnInfo">
+        <p>Name: ${data.name}</p>
+        <p>Pokedex: ${data.id}</p>
+        <p>Height: ${data.height}</p>
+        <p>Weight: ${data.weight}</p>
+      </div>
+    </div>
+  `;
+  pkmnMessage.textContent = "Pokemon found!";
+  pkmnDisplay.insertAdjacentHTML("beforeend", html);
+};
+
+const findPkmn = function (name, message) {
+  fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(message);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      displayPkmn(data);
+    })
+    .catch((err) => {
+      pkmnMessage.textContent = err.message;
+    })
+    .finally(() => {});
+};
+
+pkmnButton.addEventListener("click", (e) => {
+  e.preventDefault;
+  const introducedPokemon = pkmnIntroduced.value;
+  if (!introducedPokemon) {
+    pkmnMessage.textContent = "You need to write a name, cannot be blank!";
+    return;
+  } else {
+    findPkmn(introducedPokemon, "Pokémon not found");
+    pkmnIntroduced.value = "";
+    pkmnIntroduced.focus();
+  }
 });

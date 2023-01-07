@@ -760,3 +760,66 @@ h1 {
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
 }
+
+/*------------------------------------------------ #6 ------------------------------------------------   */
+
+.api {
+  background: linear-gradient(90deg, #e5bdf6, #d8dede);
+}
+.pkmnMain {
+  width: 100vw;
+  margin-top: 100px;
+  text-align: center;
+}
+.pkmnSearchButton {
+  display: flex;
+  justify-content: center;
+}
+.pkmnSearchButton > input {
+  margin: 20px;
+  min-height: 50px;
+  text-align: center;
+  font-size: 1rem;
+  border-radius: 10px;
+}
+.pkmnSearchButton > input[type="button"] {
+  padding: 20px;
+  cursor: pointer;
+}
+.pkmnSearchButton > input[type="button"]:active {
+  transform: translateY(3px);
+}
+.pkmnSearchButton > input[type="button"]:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.pkmnMessage {
+  font-size: 1.2rem;
+}
+.pkmnDisplay {
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+.pkmnContainer {
+  position: relative;
+  width: 200px;
+  height: 350px;
+  background-color: aliceblue;
+  border-radius: 10px;
+  margin: 40px auto;
+}
+.pkmnImage {
+  width: 75%;
+}
+.pkmnImageShiny {
+  position: absolute;
+  right: -20px;
+  top: 25%;
+}
+.pkmnInfo {
+  padding: 30px;
+}
+.pkmnInfo > p {
+  width: 100%;
+  font-size: 1rem;
+}
